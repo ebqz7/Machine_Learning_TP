@@ -200,10 +200,30 @@
 	
 	Como ya mencionamos, $w$ es el salario por hora mensual que percibe un trabajador. $f(X)$ es el conjunto de predictores, donde las variables elegidas son: la edad, el género, si es trabajador formal, el estrato socioeconómico, el máximo nivel educativo y si percibe subsidio. Por último $u$ es un término error.
 	
-	En primer lugar, vamos a dividir aleatoriamente el conjunto de datos en dos: un conjunto de entrenamiento, que cumplirá la función de insumo para que el modelo aprenda de los datos y ajuste sus parámetros, y un conjunto de prueba, utilizado para evaluar la capacidad del modelo. Para el primero será asignado un 70\% de la muestra, y para el testing el 30\% restante. 
+	En primer lugar, vamos a dividir aleatoriamente el conjunto de datos en dos: un conjunto de entrenamiento, que cumplirá la función de insumo para que el modelo aprenda de los datos y ajuste sus parámetros, y un conjunto de prueba, utilizado para evaluar la capacidad del modelo. Para el primero será asignado un 70\% de la muestra, y para el testing el 30\% restante.
 	
+	Segundo, estimamos el modelo a través de una iteración donde vamos agregando los predictores mencionados arriba. En total se corren 6 modelos lineales. La tabla 4 resume los resultados especificando el RMSE (raiz cuadrada del error cuadrático medio) tanto del conjunto de entrenamiento como del de prueba. Adicionalmente, se incorpora una columna llamada \textit{Error}, la cual se obtiene de dividir el RMSE de los datos de testing respecto de la media de la variable dependiente del mismo conjunto, permitiendo verificar cuánto la estimación se aleja de la media (expresado en porcentajes). 
 	
+	% AQUI VA TABLA 4
 	
+	Partiendo de un modelo de regresión lineal simple, con la edad como único predictor, el RMSE en el entrenamiento es de 11.508,82 unidades frente a las 11.521,53 unidades del RMSE del testing. El coeficiente de error es de 1,5\%. Si vamos incorporando variables, observamos que los errores de ambos conjuntos se reducen hasta el último modelo lineal que cuenta con 6 predictores y tiene un RMSE de 9.485,92 para el conjunto de entrenamiento y de 9.766,92 para el conjunto de prueba, siendo el coeficiente de error de 1,27\%. 
+	
+	Adicionalmente, generamos una transformación polinómica en el modelo con todos las variables explicativas para encontrar una versión que alcance el RMSE mínimo en el conjunto de testing. Una simplificación de la ecuación sería la siguiente:
+	
+	\begin{center}
+		$w = \beta_{1}X + \beta_{2}X^2 + ... + \beta_{p}X^p + u$
+	\end{center}
+	
+	Los grados del polinomio se modificarán iterativamente iniciando por un grado 2 hasta un modelo con grado 6. La tabla 5 ilustra los resultados.
+	
+	% AQUI VA TABLA 5
+	
+	Primero, evidenciamos que el número de parámetros se incrementa exponencialmente donde, por ejemplo, en el último modelo la cantidad de predictores se incrementa a 924. Sin embargo, aquí empiezan a diverger los RMSE de ambos conjuntos. Para el entrenamiento, la raiz del error cuadrático medio se reduce hasta tender a un valor levemente superior a las 7.000 unidades, mientras que en el testeo el RMSE disminuye en el modelo de grado 2, pero a partir de la transformación de grado 3 este último se incrementa, teniendo un salto exponencial en el último de grado 6. %REVISAR REDACCIÓN
+	El gráfico 7 ilustra la complejidad de todos los modelos frente a la raiz del error cuadrático medio. 
+	
+	% AQUI VA GRAFICO 7
+	
+	Los modelos con mejor performance predictiva, es decir, menor RMSE son el modelo 7, que tiene un grado polinómico igual a 2, y el modelo 8, con un grado polinómico igual a 3. Ambos tienen los menores RMSE con 9.133,29 y 9.228,33 unidades, respectivamente. Además, el coeficiente de error es de 1,19\% para el primero, y 1,20\% para el segundo. 
 	
 	
 	
