@@ -47,6 +47,8 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\E}{\mathbb{E}}
 
+\usepackage{parskip}
+
 
 \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
 		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
@@ -89,20 +91,19 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% INTRODUCTION
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
 	\section{Introduction}
+
+	La discusión sobre los ingresos laborales es relevante tanto para economistas como para \textit{policymakers}. Desde el punto de vista de las políticas públicas, resulta importante para identificar a los hogares vulnerables y mejorar el alcance de los programas sociales destinados a reducir las desigualdades de ingresos\footnote{Por ejemplo, en Perú, la pandemia evidenció la necesidad de contar con una mejor necesidad de estimar el ingreso per cápita que tiene como principal componente al ingreso laboral, dado que estas estimaciones sirvieron como principal instrumento para determinar la elegibilidad para programas de transferencias de emergencia}. Sin embargo, la mala identificación de los ingresos y, en consecuencia, la inadecuada selección de beneficiarios continúa siendo un desafío significativo para la efectividad de estos programas\footnote{Podemos mencionar papers aqui. }.
+
+	Desde la perspectiva de las finanzas públicas, la subdeclaración de ingresos constituye uno de los principales desafíos para los gobiernos, ya que genera una disminución en los ingresos tributarios. En Estados Unidos, aproximadamente el 83,6\% de los impuestos se paga de manera voluntaria y puntual, lo cual genera un a brecha que puede atribuirse al subreporte. Asimismo, la evasión de impuestos es un problema que dependiendo de quiénes y en qué magnitud, sus consecuencias van más allá de las cuentas fiscales, sino que también exacerba la desigualdad \citep{alstadsaeter2019tax}.
 	
-	Para tablas:
-	%\input{../views/av_discrimination}%
+	La precisión en la predicción de los ingresos individuales importa para la investigación económica en general. Es común incluir estimaciones del ingreso laboral como regresores, sin embargo, si por construcción se encuentran mal calculadas (subreporte), las estimaciones podrían ser sesgadas. Por ello, resulta relevante predecir los ingresos individuales. 
 	
+	Utilizando datos de Bogotá provenientes de la Gran Encuesta Integrada de Hogares (GEIH) de 2018, construimos un modelo que predice los ingresos horarios individuales. Esta base de datos a nivel individual incluye información laboral y sociodemográfica clave para predecir los salarios.
 	
-	Para figuras
-	%\begin{figure}[H]
-	%	\caption{US Map} \label{fig:robust}
-	%	\includegraphics[scale=0.75]{../views/fig1a.pdf}   
-	%	\flushleft
-	%	Note: This figure shows ...
-	%\end{figure}
-	
+	MAIN TAKEAWAY - por hacer
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% PREGUNTA 2
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,7 +191,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% PREGUNTA 3 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Predicting wages}
+	\section{Predicciones salariales}
 	
 	El modelo con el que buscamos predecir el salario por hora mensual es el siguiente:
 	
@@ -225,7 +226,30 @@
 	
 	Los modelos con mejor performance predictiva, es decir, menor RMSE son el modelo 7, que tiene un grado polinómico igual a 2, y el modelo 8, con un grado polinómico igual a 3. Ambos tienen los menores RMSE con 9.133,29 y 9.228,33 unidades, respectivamente. Además, el coeficiente de error es de 1,19\% para el primero, y 1,20\% para el segundo. 
 	
+	\subsection{Método Leave-One-Out Cross Validation (LOOCV)}
 	
+	Usando los modelos con menor error predictivo calculados mediante el \textit{validation set approach}, calculamos nuevamente el RMSE mediante el método LOOCV. Este método lleva al extremo el método usando previamente, dado que realiza tantas iteraciones como observaciones, usando cada observación como conjunto de prueba y el resto como conjunto de entrenamiento.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\hline
+\textbf{Modelo} & \textbf{RMSE (testing)} & \textbf{RMSE (LOOCV)} & \textbf{RMSE (KFold)} \\ \hline
+Modelo 7        & 9133.29                & 3770.06               & 8492.59               \\
+Modelo 8        & 9228.33                & 3471.45               & 8190.87               \\ \hline
+\end{tabular}
+\caption{Resultados de los modelos: RMSE en testing, LOOCV y validación K-Fold}
+\label{tab:resultados_combinados}
+\end{table}
+
+
+La tabla XX resume el calculo de los errores de predicción bajo tres métodos: validation set, LOOCV y K-Fold. 
+
+Existe una discrepancia en los resultados. Mientras que el validation set approach indica que el modelo 7 tiene un mejor performance, el metodo LOOVC presenta un resultado favorable hacia el modelo 8. La razón detrás de esto puede ser que la muestra de testeo pueda estar sesgado, favorenciendo al modelo 7. Dado que la muestra de entrenamiento y testeo se selecciona aleatoriamente, puede que la muestra de prueba no represente la distribución de los datos. Sin embargo, vale destacar que también se puede deber al método en sí mismo, dado que LOOCV es sensible a los outliers pues recorre aca observación de la muestra como conjunto de prueba. Por último, la razón más relevante puede ser la complejidad del modelo. El módelo con polinomio de grado 3 puede ser generalizado de mejor manera en multiples muestras de entrenamiento, pero no implica que sea el mejor en todas las muestras.
+
+Por ello, realizamos una validación por el método K-Fold\footnote{Se utiliza un \code{random state = 123} y 10 submuestras.}. Este método es similar a LOOCV, con la diferencia de que que la unidad de iteración son las submuestras. Bajo este método, el modelo con menor error de predicción es el políinómico de grado 3.
+
+
 	
 	% --------------------------------------------------------------
 	%     You don't have to mess with anything below this line.
