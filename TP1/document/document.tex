@@ -134,13 +134,20 @@ Un análisis utilizando la GEIH\thanks{Este trabajo corresponde al Trabajo Prác
 	Para culminar esta sección, realizamos un análisis descriptivo con los datos resultantes, el cual va desde cuadros con estadísticas relevantes hasta gráficos para observar la distribución del salario por hora. La tabla 1 realiza un resumen de la media, el desvío, el total de observaciones, y el mínimo y máximo valor. Cabe destacar el uso del ponderador "fweight" para que los datos sean representativos de la población.
 	
 	\begin{table}[H]
+<<<<<<< HEAD
 \caption{Estadísticas descriptivas del Salario por hora mensual}
+=======
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 		\centering
 		\begin{tabular}{lccccc}
 			\hline
 			\textbf{Media} & \textbf{Desvío std} & \textbf{Población} & \textbf{Mínimo} & \textbf{Máximo} \\ \hline
 			7.968,09 & 11.690,91 & 2.459.723 & 151,91 & 291.666,66 \\ \hline
 		\end{tabular}
+<<<<<<< HEAD
+=======
+		\caption{Estadísticas descriptivas del Salario por hora mensual}
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 		\label{tab:estadisticas}
 	\end{table}
 	
@@ -153,16 +160,27 @@ Un análisis utilizando la GEIH\thanks{Este trabajo corresponde al Trabajo Prác
 	Ahora bien, veamos cómo se modifican los estadísticos si desagregamos por un conjunto de variables. La tabla 2 resume esta información por género. 
 	
 	\begin{table}[H]
+<<<<<<< HEAD
 \caption{Estadísticas descriptivas por género}
         \centering
+=======
+		\centering
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 		\begin{tabular}{lccccc}
 			\hline
 			\textbf{Género} & \textbf{Media} & \textbf{Desvío std} & \textbf{Población} & \textbf{Mínimo} & \textbf{Máximo} \\ \hline
 			Mujer & 7.808,22 & 10.903,69 & 1.211.179 & 151,91 & 175.000 \\ 
 			Varón & 8.123,18 & 12.406,07 & 1.248.544 & 518,52 & 291.666,66 \\ \hline
 		\end{tabular}
+<<<<<<< HEAD
 		\label{tab:estadisticas_genero}
 	\end{table}
+=======
+		\caption{Estadísticas descriptivas por género.}
+		\label{tab:estadisticas_genero}
+	\end{table}
+	
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 	
 	Para el caso de las mujeres, el salario por hora medio es de \$COL 7.808,22, mientras que para los varones es de \$COL 8.123,18, es decir que en promedio el género masculino gana un 4\% que el femenino según la muestra trabajada. Sin embargo, la dispersión para los primeros es mayor que para estas últimas, como así también los valores mínimo y máximo. Por lo tanto, existe una brecha de género que la media no termina de capturar, pero que se demuestra en la variabilidad de estos datos. El gráfico \ref{fig:graph_2} ilustra la distribución por sexo utilizando el logaritmo del salario. 
 	
@@ -171,16 +189,27 @@ Un análisis utilizando la GEIH\thanks{Este trabajo corresponde al Trabajo Prác
 	Por otro lado, la tabla 3 muestra las estadísticas descriptivas dividido si la persona tiene un empleo formal, o dicho de otra manera, si cuenta con un registro en la seguridad social.
 	
 	\begin{table}[H]
+<<<<<<< HEAD
         \centering
         \caption{Estadísticas descriptivas por registro laboral}
+=======
+		\centering
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 		\begin{tabular}{lccccc}
 			\hline
 			\textbf{Registro} & \textbf{Media} & \textbf{Desvío std} & \textbf{Población} & \textbf{Mínimo} & \textbf{Máximo} \\ \hline
 			Formal   & 9.123,23 & 12.799,65 & 1.886.900 & 151,91 & 291.666,66 \\ 
 			Informal & 4.163,04 & 5.327,54  & 572.823   & 326,67 & 136.111,11 \\ \hline
 		\end{tabular}
+<<<<<<< HEAD
 		\label{tab:estadisticas_registro}
 	\end{table}
+=======
+		\caption{Estadísticas descriptivas por registro laboral.}
+		\label{tab:estadisticas_registro}
+	\end{table}
+	
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 	
 	Un empleado formal tiene un salario horario medio que equivale a más de dos ingresos de los informales. Especificamente, la remuneración esta por encima en un 119\%. Sin embargo, hay una diferencia significativa entre el total de formales, 1.886.900, y el total de no formales, 572.823. Esto nos indica 2 cosas: (i) con los filtros realizados, capturamos una porción importante de los empleados registrados, pero no ocurre lo mismo con los no registrados en la seguridad social, y (ii) los informales pueden tener ingresos provenientes de otras ocupaciones, incluso más de una, por ende la variable de referencia seleccionada, el salario por hora mensual, no sería la adecuada para capturar este segmento de la población. El gráfico \ref{fig:graph_3} vislumbra la distribución de lo mencionado previamente. 
 	
@@ -226,7 +255,10 @@ Un análisis utilizando la GEIH\thanks{Este trabajo corresponde al Trabajo Prác
 	
 	\begin{table}[H]
 		\centering
+<<<<<<< HEAD
         \caption{Performance predictiva de los modelos lineales}
+=======
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 		\begin{tabular}{lccccc}
 			\hline
 			\textbf{Modelo} & \textbf{Parámetros} & \textbf{RMSE (train)} & \textbf{RMSE (test)} & \textbf{Coef. Error} \\ \hline
@@ -237,8 +269,15 @@ Un análisis utilizando la GEIH\thanks{Este trabajo corresponde al Trabajo Prác
 			5 & 5 & 9743,66  & 10081,41 & 1,31 \\ 
 			6 & 6 & 9485,92  & 9766,92  & 1,27 \\ \hline
 		\end{tabular}
+<<<<<<< HEAD
 		\label{tab:modelos_rmse}
 	\end{table}
+=======
+		\caption{Performance predictiva de los modelos lineales}
+		\label{tab:modelos_rmse}
+	\end{table}
+	
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 	
 	Partiendo de un modelo de regresión lineal simple, con la edad como único predictor, el RMSE en el entrenamiento es de 11.508,82 unidades frente a las 11.521,53 unidades del RMSE del testing. El coeficiente de error es de 1,5\%. Si vamos incorporando variables, observamos que los errores de ambos conjuntos se reducen hasta el último modelo lineal que cuenta con 6 predictores y tiene un RMSE de 9.485,92 para el conjunto de entrenamiento y de 9.766,92 para el conjunto de prueba, siendo el coeficiente de error de 1,27\%. 
 	
@@ -252,7 +291,10 @@ Un análisis utilizando la GEIH\thanks{Este trabajo corresponde al Trabajo Prác
 	
 	\begin{table}[H]
 		\centering
+<<<<<<< HEAD
         \caption{Performance predictiva de los modelos polinómicos}
+=======
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 		\begin{tabular}{lccccc}
 			\hline
 			\textbf{Modelo} & \textbf{Parámetros} & \textbf{RMSE (train)} & \textbf{RMSE (test)} & \textbf{Coef. Error} \\ \hline
@@ -262,11 +304,21 @@ Un análisis utilizando la GEIH\thanks{Este trabajo corresponde al Trabajo Prác
 			10 & 462 & 7276,48  & 10200,02 & 1,33 \\ 
 			11 & 924 & 7160,97  & 17569,97 & 2,29 \\ \hline
 		\end{tabular}
+<<<<<<< HEAD
 		\label{tab:modelos_rmse}
 	\end{table}
 	
 	Primero, evidenciamos que el número de parámetros se incrementa exponencialmente donde, por ejemplo, en el último modelo la cantidad de predictores se incrementa a 924. Sin embargo, aquí empiezan a divergir los RMSE de ambos conjuntos. Para el entrenamiento, la raíz del error cuadrático medio se reduce hasta tender a un valor levemente superior a las 7.000 unidades, mientras que en el testeo el RMSE disminuye en el modelo de grado 2, pero se incrementa a partir de la transformación de grado 3, teniendo un salto exponencial en el último de grado 6. Esto indica que al incrementar los predictores, el modelo incorpora el ruido del conjunto de datos, volviendo las predicciones más imprecisas.  
 	El gráfico \ref{fig:graph_6} ilustra la complejidad de todos los modelos frente a la raíz del error cuadrático medio. 
+=======
+		\caption{Performance predictiva de los modelos polinómicos}
+		\label{tab:modelos_rmse}
+	\end{table}
+	
+	
+	Primero, evidenciamos que el número de parámetros se incrementa exponencialmente donde, por ejemplo, en el último modelo la cantidad de predictores se incrementa a 924. Sin embargo, aquí empiezan a diverger los RMSE de ambos conjuntos. Para el entrenamiento, la raiz del error cuadrático medio se reduce hasta tender a un valor levemente superior a las 7.000 unidades, mientras que en el testeo el RMSE disminuye en el modelo de grado 2, pero se incrementa a partir de la transformación de grado 3, teniendo un salto exponencial en el último de grado 6. Esto indica que al incrementar los predictores, el modelo incorpora el ruido del conjunto de datos, volviendo las predicciones más imprecisas.  
+	El gráfico 7 ilustra la complejidad de todos los modelos frente a la raiz del error cuadrático medio. 
+>>>>>>> 72a42e6fd85f7b07cfa6401c62db5f02344595b0
 	
 	% AQUI VA GRAFICO 7
 	
